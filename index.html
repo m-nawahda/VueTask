@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="style/style.css">
+        <script src="js/vue.js"></script>
+        
+    </head>
+    <body>
+        <div id="root" @submit.prevent="addNewTask">
+            <form id="addTask-form">
+                <textarea id="taskName-txt" placeholder="Enter the Task Name..." v-model="currentName"></textarea>
+                <button type="submit" id="addTask-btn">Add task</button>
+                <button type="button" id="clear-btn" @click="clearField">Clear</button>
+
+            </form>
+            <div id="Tasks-container">
+                <div
+                    :style="evaluateColor(index)" 
+                    v-for="(task,index) in tasks" 
+                    :key="index"
+                    class="task-container"
+                >
+                    {{task.taskName}}
+                    <div>
+                        <i class="fa fa-arrow-up" aria-hidden="true"  v-show="index!=0" @click="decreasePriority(task,index)"></i>
+                        <i class="fa fa-arrow-down" aria-hidden="true" style="color: aqua;" v-show="index!=tasks.length-1" @click="increasePriority(task,index)"> </i>
+                    </div>    
+                </div>
+            </div>
+        </div>    
+        <script src="js/AddTask.js"></script>
+    </body>
+ 
+</html>

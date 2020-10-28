@@ -1,0 +1,48 @@
+html,
+body {
+  margin: 0;
+  width: 100%;
+}
+#root {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+}
+#addTask-form {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+#taskName-txt {
+  width: 100%;
+  height: 10%;
+  display: block;
+  margin: 0 auto 30px auto ;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+#addTask-btn,
+#clear-btn {
+  width: 100px;
+  height: 40px;
+  margin: 15px 0;
+}
+#Tasks-container {
+  width: 100%;
+  border: 1px solid black;
+  margin: 0 auto;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+.task-container {
+  position: relative;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.task-container:not(:last-child) {
+  margin-bottom: 5px;
+}
