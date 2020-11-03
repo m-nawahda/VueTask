@@ -25,23 +25,18 @@ var vm = new Vue({
             }
         },
         increasePriority (task,index) {
-            /* if(index==this.tasks.length-1)return
-            this.tasks[index].priority++; */
             var nextIndex = Math.min( this.tasks.length, ( index + 1 ) );
             this.tasks.splice( index, 1 );
             this.tasks.splice( nextIndex, 0, task );
             this.selectedTask = task;
-
         },
         decreasePriority (task,index) {
-           /*  if(index==0)return
-            this.tasks[index].priority--; */
             var nextIndex = Math.max( 0, ( index - 1 ) );
             this.tasks.splice( index, 1 );
             this.tasks.splice( nextIndex, 0, task );
             this.selectedTask = task;
-
         },
+        
 
     }
 })

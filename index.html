@@ -3,6 +3,8 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" />
         <link rel="stylesheet" href="style/style.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.14.1/lodash.min.js"></script>
         <script src="js/vue.js"></script>
         
     </head>
@@ -14,20 +16,21 @@
                 <button type="button" id="clear-btn" @click="clearField">Clear</button>
 
             </form>
-            <div id="Tasks-container">
-                <div
-                    :style="evaluateColor(index)" 
+            <transition-group name="task-container" tag="ul" id="Tasks-container">
+                <li
+                    :style="evaluateColor(index)"  
                     v-for="(task,index) in tasks" 
                     :key="index"
-                    class="task-container"
+                    class="task-container" 
+                    :class="{'task-container--selected' : (task === selectedTask)}"
                 >
                     {{task.taskName}}
                     <div>
                         <i class="fa fa-arrow-up" aria-hidden="true"  v-show="index!=0" @click="decreasePriority(task,index)"></i>
                         <i class="fa fa-arrow-down" aria-hidden="true" style="color: aqua;" v-show="index!=tasks.length-1" @click="increasePriority(task,index)"> </i>
                     </div>    
-                </div>
-            </div>
+                </li>
+            </transition-group>
         </div>    
         <script src="js/AddTask.js"></script>
     </body>
